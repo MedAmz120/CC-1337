@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moamzil <moamzil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/14 13:21:54 by moamzil           #+#    #+#             */
+/*   Updated: 2024/12/17 19:17:51 by moamzil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 /* ------ ORTHODOX CANONICAL FORM ------ */
 
 Bureaucrat::Bureaucrat() : name("Default")
 {
-    std::cout << "Default constructor Called" << std::endl;
+    std::cout << "Default constructor Called For unowkn Bureaucrat" << std::endl;
     this->grade = 150;
 }
 
@@ -28,7 +40,7 @@ Bureaucrat::Bureaucrat(const std::string& name_it, int grade_it) : name(name_it)
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Bureaucrat has been Destroyed" << std::endl;
+    std::cout << this->name << " Bureaucrat has been Destroyed" << std::endl;
 }
 
 

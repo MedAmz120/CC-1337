@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moamzil <moamzil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 19:23:36 by moamzil           #+#    #+#             */
+/*   Updated: 2024/12/17 19:27:21 by moamzil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 /* ------ ORTHODOX CANONICAL FORM ------ */
 
 Bureaucrat::Bureaucrat() : name("Default")
 {
-    std::cout << "Default constructor Called" << std::endl;
+    std::cout << "Default constructor Called For unowkn Bureaucrat" << std::endl;
     this->grade = 150;
 }
 
