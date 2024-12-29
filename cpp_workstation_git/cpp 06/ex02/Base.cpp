@@ -4,6 +4,7 @@
 #include "C.hpp"
 
 Base* generate(void) {
+    srand(time(0));
     int randomValue = rand() % 3; // Generate a random number between 0 and 2
 
     if (randomValue == 0) {

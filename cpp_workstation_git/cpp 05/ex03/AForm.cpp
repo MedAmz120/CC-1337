@@ -5,13 +5,11 @@
 
 AForm::AForm() : name ("default") , gradeToSign (1), gradeToExec (1)
 {
-    std::cout << "Default constructor Called" << std::endl;
     is_signed = false;
 }
 
 AForm::AForm(const std::string& name_it, const int s_Grade, const int ex_Grade) : name(name_it), gradeToSign(s_Grade), gradeToExec(ex_Grade)
 {
-    std::cout << name << " AForm constructor called" << std::endl;
     is_signed = false;
     if (s_Grade < 1 || ex_Grade < 1)
         throw GradeTooHighException();

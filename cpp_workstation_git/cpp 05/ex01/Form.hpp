@@ -42,9 +42,9 @@ class Form {
         virtual const char* what() const throw();
     };
 
-    void    beSigned(const Bureaucrat &bureaucrat);
+    void    beSigned(const Bureaucrat &bureaucrat); // sign the form
     const   std::string& getName();
-    bool    get_signed();
+    bool    get_signed(); // signed or not
     int getSigngrade();
     int getExecgrade();
 };

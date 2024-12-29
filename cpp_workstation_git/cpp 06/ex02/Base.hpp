@@ -8,7 +8,6 @@
 class Base {
     public:
     virtual ~Base() = 0;
-
 };
 
 Base * generate(void);

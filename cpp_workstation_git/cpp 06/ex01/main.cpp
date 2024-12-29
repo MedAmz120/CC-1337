@@ -1,14 +1,21 @@
 #include "Serializer.hpp"
 
 int main() {
-    Data data;
-    data.v = 10;
-    // Serializer serializer;
+    Data* ptr = NULL;
+    Data* new_ptr = NULL;
+    uintptr_t raw;
 
-    uintptr_t raw = Serializer::serialize(&data);
-    std::cout << "Serializer: " << raw << std::endl;
+    ptr = new Data;
+    ptr->str = "Lorem ipsum";
+
+    raw = Serializer::serialize(ptr);    
     
-    Data* deserializedData = Serializer::deserialize(raw);
-    std::cout << "DeSerializer: " << deserializedData << std::endl;
+    new_ptr = Serializer::deserialize(raw);
+    
+    std::cout << "Data of ptr: " << ptr->str << std::endl;
+    std::cout << "Data of new_ptr: " << new_ptr->str << std::endl;
+
+    delete ptr;
+
     return 0;
 }

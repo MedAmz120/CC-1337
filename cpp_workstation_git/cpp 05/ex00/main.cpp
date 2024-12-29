@@ -14,7 +14,7 @@
 
 int main()
 {
-       try {
+    try {
         Bureaucrat b1("John", 150);
         std::cout << b1 << std::endl;
         b1.incrementGrade();
@@ -31,7 +31,7 @@ int main()
         Bureaucrat b3;
         b3 = b2;
         std::cout << b3 << std::endl;
-    } catch (std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
+    } catch (std::exception& exception) {
+        std::cerr << "Exception: " << exception.what() << std::endl;
     }
 }

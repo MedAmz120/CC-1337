@@ -18,7 +18,7 @@ class AForm {
     AForm();
     AForm(const std::string& name_it, const int s_Grade, const int ex_Grade);
     AForm(const AForm &copie);
-    ~AForm();
+    virtual ~AForm();
     AForm& operator=(const AForm& copie);
 
 

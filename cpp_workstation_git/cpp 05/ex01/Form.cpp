@@ -94,10 +94,10 @@ int Form::getExecgrade()
 
 std::ostream& operator<<(std::ostream& out, Form& Form)
 {
-    out << "Form: " << Form.getName();
-    out << " Grade To Sign : " << Form.getSigngrade();
-    out << " Grade To Execute : " << Form.getExecgrade();
-    out << " Signed : " << ((Form.get_signed()) ? "yes " : "No");
+    out << "Form: " << Form.getName() << std::endl;
+    out << " Grade To Sign : " << Form.getSigngrade() << std::endl;
+    out << " Grade To Execute : " << Form.getExecgrade() << std::endl;
+    out << " Signed : " << ((Form.get_signed()) ? "yes " : "No") << std::endl;
 
     return (out);
 }

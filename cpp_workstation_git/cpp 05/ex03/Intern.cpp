@@ -7,22 +7,37 @@ Intern::Intern(const Intern &other)
     *this = other;
 }
 
-AForm *Intern::CreateShrubberyCreationForm(std::string target)
+Intern::~Intern() {}
+
+Intern&	Intern::operator=(const Intern& other)
 {
-    return (new ShrubberyCreationForm(target));
+	(void)other;
+	return (*this);
 }
 
-AForm *Intern::CreateRobotmyRequestForm(std::string target)
+AForm *Intern::makeForm(const std::string& form_name, const std::string& target) const
 {
-    return (new RobotomyRequestForm(target));
-}
+	AForm	*new_form;
 
-AForm *Intern::CreatePresidentialPardonForm(std::string target)
-{
-    return (new PresidentialPardonForm(target));
-}
+	t_form	data[] = 
+	{
+		{ "presidential pardon", new PresidentialPardonForm(target) },
+		{ "robotomy request", new RobotomyRequestForm(target) },
+		{ "shrubbery creation", new ShrubberyCreationForm(target) },
+		{ "", NULL }
+	};
 
-AForm *Intern::makeForm(std::string form_name, std::string target)
-{
-    std::string rry;
+	new_form = NULL;
+	for (int i = 0; data[i].form != NULL; i++)
+	{
+		if (data[i].type == form_name)
+			new_form = data[i].form;
+		else
+			delete data[i].form;
+	}
+	if (new_form == NULL)
+		std::cout << "Form \'" << form_name << "\' does not exist "<< std::endl;
+	else
+		std::cout << "Intern creates " << form_name << std::endl;
+	return new_form;
 }

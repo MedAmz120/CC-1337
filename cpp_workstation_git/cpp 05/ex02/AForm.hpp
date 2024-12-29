@@ -36,9 +36,9 @@ class AForm {
 
     void    beSigned(const Bureaucrat &bureaucrat);
     const   std::string& getName();
-    bool get_signed();
-    int getSigngrade();
-    int getExecgrade();
+    bool    get_signed();
+    int     getSigngrade();
+    int     getExecgrade();
     virtual void execute(const Bureaucrat& executor) const = 0;
     void    checkExecutability(const Bureaucrat& executor) const;
 };

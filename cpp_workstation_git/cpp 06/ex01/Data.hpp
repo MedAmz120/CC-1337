@@ -4,8 +4,8 @@
 #include <cstdint>
 
 struct Data {
-    public:
     uintptr_t v;
+    std::string str;
 };
 
 
