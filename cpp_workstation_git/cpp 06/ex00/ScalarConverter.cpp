@@ -6,7 +6,7 @@
 /*   By: moamzil <moamzil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 16:01:56 by moamzil           #+#    #+#             */
-/*   Updated: 2025/01/01 15:09:18 by moamzil          ###   ########.fr       */
+/*   Updated: 2025/01/01 16:00:54 by moamzil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,11 @@ bool string_combination_checker(const std::string& str)
             }
             continue;
         }
-        if ((isalpha(c) && i > 1 && i != 0)) {
-            if (c == 'f' && i == str.length() - 1 && !isalpha(str[i - 1]))
+        if ((isalpha(c) && i >= 1 && i != 0)) {
+            if (c == 'f' && i == str.length() - 1 && !isalpha(str[i - 1])) 
                 continue;
             return false;
         }
-        //std::cout << "--> " << c << std::endl;
-        //return false;
     }
     if (signCount > 1)
         return false;
