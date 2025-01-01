@@ -1,0 +1,122 @@
+Overview of Each Exercise
+
+Exercise 00: Convert Scalar
+
+This exercise is about converting a single value (scalar) into different types (char, int, float, double).
+
+What You Need to Do:
+
+Write a class called ScalarConverter.
+
+It must have a single static method, convert(), that takes a string and:
+
+Figures out the type of the value (is it 42, 'A', 42.0f, or nanf?).
+
+Converts and prints that value as char, int, float, and double.
+
+Example Input:
+
+`"42" → Prints it as:
+
+char: '*'
+int: 42
+float: 42.0f
+double: 42.0
+
+`"nanf" → Special case:
+
+char: impossible
+int: impossible
+float: nanf
+double: nan
+
+Key Challenges:
+
+Detect the type of the input.
+
+Handle special cases like nan, nanf, +inf, -inf, etc.
+
+Respect the limits of each type (char must be printable, int must be within bounds, etc.).
+
+Exercise 01: Serialization
+
+This exercise is about converting a pointer to a number and back to a pointer.
+
+What You Need to Do:
+
+Write a class called Serializer with:
+
+A serialize() function that converts a Data* pointer into a uintptr_t (an integer type big enough to hold a pointer).
+
+A deserialize() function that converts the uintptr_t back into a Data*.
+
+Write a Data structure with some fields (e.g., a string and an int).
+
+Example Workflow:
+
+Serialize:
+
+Take a pointer to a Data object and convert it to an integer.
+
+Deserialize:
+
+Take the integer and convert it back into the original pointer.
+
+Verify:
+
+Check if the pointer before and after matches.
+
+Key Challenges:
+
+Correctly handle the conversion between pointer and integer.
+
+Ensure no data is lost or corrupted during serialization and deserialization.
+
+Exercise 02: Identify Real Type
+
+This exercise is about working with polymorphism and figuring out the real type of an object at runtime.
+
+What You Need to Do:
+
+Create a base class called Base with three derived classes: A, B, and C.
+
+Write two functions:
+
+One to identify the type of an object using a Base* pointer.
+
+Another to identify the type of an object using a Base& reference.
+
+Write a function that generates a random object (A, B, or C) and returns it as a Base*.
+
+Example Workflow:
+
+Create a random object (e.g., A).
+
+Pass it to the identifier functions.
+
+The functions should correctly print the type:
+
+A
+
+Key Challenges:
+
+Use dynamic_cast to check the real type at runtime.
+
+Handle pointers and references properly.
+
+How to Think About These Exercises
+
+Exercise 00: “How can I detect and convert a value to multiple types?”
+
+Exercise 01: “How can I turn a pointer into a number and back into a pointer safely?”
+
+Exercise 02: “How can I figure out the real type of an object in a polymorphic hierarchy?”
+
+These exercises focus on:
+
+Understanding type conversion and handling edge cases.
+
+Manipulating pointers and low-level concepts like serialization.
+
+Using inheritance and polymorphism effectively.
+

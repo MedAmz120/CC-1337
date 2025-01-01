@@ -145,13 +145,13 @@ bool ScalarConverter::convertToInt(const std::string& str)
 
 void ScalarConverter::convertToFloat()
 {
-    float result = ascii_;
+    float result = static_cast<float>(ascii_);
     std::cout << "float : "<< std::fixed << std::setprecision(1) << result << "f" <<std::endl;
 }
 
 void ScalarConverter::convertToDouble()
 {
-    double result = ascii_;
+    double result = static_cast<double>(ascii_);
     std::cout << "double : "<< std::fixed << std::setprecision(1) << result <<std::endl;
 }
 
