@@ -6,10 +6,9 @@
 #    By: moamzil <moamzil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 13:14:46 by moamzil           #+#    #+#              #
-#    Updated: 2024/05/19 15:39:49 by moamzil          ###   ########.fr        #
+#    Updated: 2025/01/01 14:12:50 by moamzil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME 	= ScalarConverter
 COMPILE = c++ -Wall -Wextra -Werror -std=c++98

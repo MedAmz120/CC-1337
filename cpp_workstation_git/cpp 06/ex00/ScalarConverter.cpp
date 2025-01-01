@@ -1,12 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moamzil <moamzil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/31 16:01:56 by moamzil           #+#    #+#             */
+/*   Updated: 2025/01/01 15:09:18 by moamzil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
 
 int     ascii_ = 0;
 
+/* ----------- ORTHODOX CANONICAL FORM -----------*/
+
+ScalarConverter::ScalarConverter () {}
+ScalarConverter::ScalarConverter (const ScalarConverter &copie) {
+    *this = copie;
+}
+ScalarConverter::~ScalarConverter () {};
+
+/* ----------- END ORTHODOX CANONICAL FORM -----------*/
+
 bool check_displayable(int c)
 {
-    // if (c >= 1 && c <= 9)
-    //     return true;
-    if (/*!(c >= 1 && c <= 9) && */!isprint(c))
+    if (!isprint(c))
         return false;
     return true;
 }
@@ -25,6 +45,50 @@ bool    string_or_not(const std::string& str)
         return false;
     return true;
 }
+
+bool string_combination_checker(const std::string& str)
+{
+    int dotCount = 0;
+    int signCount = 0;
+    
+    for (size_t i = 0; i < str.length(); i++) {
+        char c = str[i];
+        
+        if (isdigit(c)) {
+            continue;
+        }
+        if ((c == '+' || c == '-') && i == 0) {
+            signCount++;
+            continue;
+        }
+        if (c == '.') {
+            dotCount++;
+            if (dotCount > 1) {
+                return false;
+            }
+            continue;
+        }
+        if ((isalpha(c) && i > 1 && i != 0)) {
+            if (c == 'f' && i == str.length() - 1 && !isalpha(str[i - 1]))
+                continue;
+            return false;
+        }
+        //std::cout << "--> " << c << std::endl;
+        //return false;
+    }
+    if (signCount > 1)
+        return false;
+    return true;
+}
+
+void convertPseudo(const std::string& str) {
+    float fValue = std::strtof(str.c_str(), nullptr);
+    double dValue = std::strtod(str.c_str(), nullptr);
+
+    std::cout << "Float: " << fValue << "f" << std::endl;
+    std::cout << "Double: " << dValue << std::endl;
+}
+
 
 void ScalarConverter::convertToChar(const std::string& str)
 {
@@ -84,54 +148,13 @@ bool ScalarConverter::convertToInt(const std::string& str)
 void ScalarConverter::convertToFloat()
 {
     float result = ascii_;
-    std::cout << "float : "<< std::fixed <<std::setprecision(1) << result << "f" <<std::endl;
+    std::cout << "float : "<< std::fixed << std::setprecision(1) << result << "f" <<std::endl;
 }
 
 void ScalarConverter::convertToDouble()
 {
     double result = ascii_;
-    std::cout << "double : "<< std::fixed <<std::setprecision(1) << result <<std::endl;
-}
-
-bool string_combination_checker(const std::string& str)
-{
-    int dotCount = 0; // Keep track of dots
-    int signCount = 0; // Keep track of + or -
-    
-    for (size_t i = 0; i < str.length(); i++) {
-        char c = str[i];
-        
-        // Check if the character is a digit
-        if (isdigit(c)) {
-            continue; // Digits are always fine
-        }
-        
-        // Check for '+' or '-' at the start
-        if ((c == '+' || c == '-') && i == 0) {
-            signCount++;
-            continue;
-        }
-        
-        // Check for '.' but only allow one
-        if (c == '.') {
-            dotCount++;
-            if (dotCount > 1) {
-                return false; // Too many dots
-            }
-            continue;
-        }
-
-        // Check for 'f' at the end (for float)
-        if (c == 'f' && i == str.length() - 1) {
-            continue; // 'f' at the end is fine
-        }
-
-        // Anything else is invalid
-        return false;
-    }
-    if (signCount > 1)
-        return false;
-    return true; // If we passed all checks, it's valid
+    std::cout << "double : "<< std::fixed << std::setprecision(1) << result <<std::endl;
 }
 
 void ScalarConverter::convert(const std::string& str)
@@ -141,16 +164,9 @@ void ScalarConverter::convert(const std::string& str)
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
 
-        if (str == "nanf")
-        {
-            std::cout << "float: " << str << std::endl;
-            std::cout << "double: nan" << std::endl; // Adjust double output
-        }
-        else if (str == "-inff" || str == "+inff")
-        {
-            std::cout << "float: " << str.substr(1) << std::endl; // Skip the sign
-            std::cout << "double: " << str.substr(1, str.length() - 2) << std::endl; // Remove 'f'
-        }
+        if (str == "nan" || str == "nanf" ||str == "-inff" || str == "+inff" || str == "inff"
+            || str == "-inf" || str == "+inf" || str == "inf")
+                convertPseudo(str);
         else
         {
             std::cout << "float: impossible" << std::endl;
