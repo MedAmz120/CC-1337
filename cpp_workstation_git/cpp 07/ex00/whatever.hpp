@@ -2,8 +2,6 @@
 #define WHATEVER_HPP
 
 #include <iostream>
-#include <string>
-
 
 template<typename ourtype>
 void    swap(ourtype &a, ourtype &b)

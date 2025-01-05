@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 
-NAME 	= iter
+NAME 	= Arr
 COMPILE = c++ -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp
 OBJ		= $(SRC:.cpp=.o)
-HEAD	= iter.hpp
+HEAD	= Array.hpp
 
 all: $(NAME)
 
