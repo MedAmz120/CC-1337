@@ -1,6 +1,18 @@
 #include "Span.hpp"
 
+Span::Span() {}
 
+Span::Span(Span const &copie) {
+    *this = copie;
+}
+
+Span& Span::operator=(Span const &copie) {
+    this->N = copie.N;
+    this->span = copie.span;
+    return (*this);
+}
+
+Span::~Span() {}
 
 /*---------------- Methods --------------------*/
 
