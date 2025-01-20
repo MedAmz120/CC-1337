@@ -1,9 +1,23 @@
 #include "BitcoinExchange.hpp"
 
+/* ------------- OCF -------------- */
 
 BitcoinExchange::BitcoinExchange () {}
 
 BitcoinExchange::~BitcoinExchange () {}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copie) {
+    *this = copie;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& copie)
+{
+    if (&copie != this)
+	    data = copie.data;
+	return *this;
+}
+
+/* --------------------- */
 
 void BitcoinExchange::read_data_csv () {
     std::ifstream   file(data_file.c_str()); // c_str to convert from str to char*
@@ -36,7 +50,7 @@ bool    BitcoinExchange::check_file(const std::ifstream& file) const {
 bool    BitcoinExchange::check_line(const std::string& line) const {
     if (line.empty())
             return false;
-    if (line.find('|') == std::string::npos) // npos contant indicate not found
+    if (line.find('|') == std::string::npos) // npos constant indicate not found
     {
         std::cerr << "Error: Bad input => " << line << std::endl;
         return false;
@@ -107,14 +121,14 @@ bool    BitcoinExchange::check_value(const std::string& value_str, double *value
 
 double	BitcoinExchange::get_result(std::string date)
 {
-	//upper_bound: p points to the first element with key >k or c.end(); ordered containers only
-	std::map<std::string, double>::const_iterator it = data.upper_bound(date);
-	if (it == data.begin()) {
+	std::map<std::string, double>::const_iterator it = data.upper_bound(date); // upper bound will point on to the first element with a key greater than the given date
+
+    if (it == data.begin()) { //If the iterator returned by upper_bound is at the beginning of the map there is no earlier date available
 		std::cout << "Error: no available rate for the given date or earlier." << std::endl;
 		return -1.0;
 	}
-	--it;
-	return it->second;
+	--it; // moving back one step (--it) positions
+	return it->second; // The value associated with the key at the iterator it 2022-02-08,44133.28  the second here is 44133.28
 }
 
 void    BitcoinExchange::Exchange(const std::string& value_str, double value, const std::string& date) {

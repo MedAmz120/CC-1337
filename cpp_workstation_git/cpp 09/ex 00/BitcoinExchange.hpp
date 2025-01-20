@@ -16,6 +16,8 @@ class BitcoinExchange {
 
     public:
     BitcoinExchange ();
+    BitcoinExchange(const BitcoinExchange& copie);
+    BitcoinExchange& operator=(const BitcoinExchange& copie);
     ~BitcoinExchange();
 
     void    read_data_csv();
