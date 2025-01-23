@@ -1,0 +1,79 @@
+
+Mandatory IRC Commands:
+
+1. PASS
+   - Purpose: Authenticate the client by verifying the connection password.
+   - Usage: PASS <password>
+   - Details:
+     * The client sends this command to the server immediately after connecting.
+     * If the password is incorrect, the server should disconnect the client.
+
+2. NICK
+   - Purpose: Assign or change a nickname for the client.
+   - Usage: NICK <nickname>
+   - Details:
+     * Each user on the server must have a unique nickname.
+     * If a nickname is already taken, the server should notify the client to choose another one.
+
+3. USER
+   - Purpose: Provide the username and other user details.
+   - Usage: USER <username> <hostname> <servername> :<realname>
+   - Details:
+     * This command must be sent after PASS and NICK.
+     * The server can store this information for identification.
+
+4. JOIN
+   - Purpose: Allow the client to join a channel (chatroom).
+   - Usage: JOIN <#channel>
+   - Details:
+     * If the channel doesn’t exist, the server creates it.
+     * The client should be added to the channel’s participant list.
+     * The server should broadcast a join message to all participants in the channel.
+
+5. PART
+   - Purpose: Leave a channel the client is currently part of.
+   - Usage: PART <#channel>
+   - Details:
+     * The server removes the client from the channel's participant list.
+     * Notify other users in the channel that the client has left.
+
+6. PRIVMSG
+   - Purpose: Send a private message to another user or a channel.
+   - Usage: PRIVMSG <recipient> :<message>
+   - Details:
+     * If the recipient is a channel, the server broadcasts the message to all participants in the channel.
+     * If the recipient is a user, the server forwards the message directly to them.
+
+7. KICK
+   - Purpose: Remove a client from a channel (operator-only command).
+   - Usage: KICK <#channel> <nickname> :<reason>
+   - Details:
+     * Only channel operators can execute this command.
+     * The server must remove the client from the channel and notify them with the reason provided.
+
+8. INVITE
+   - Purpose: Invite a user to join a specific channel (operator-only command).
+   - Usage: INVITE <nickname> <#channel>
+   - Details:
+     * The server sends an invitation notification to the specified user.
+     * For invite-only channels, the invited user can join even if restrictions apply.
+
+9. TOPIC
+   - Purpose: Set or view the topic of a channel.
+   - Usage:
+     * To set: TOPIC <#channel> :<new topic>
+     * To view: TOPIC <#channel>
+   - Details:
+     * Only channel operators can set the topic if the channel mode restricts it.
+     * The server should store and share the topic with channel participants.
+
+10. MODE
+    - Purpose: Change or view the mode (settings) of a channel.
+    - Usage: MODE <#channel> <+/-mode>
+    - Details:
+      * Modes include:
+        - +i: Make the channel invite-only.
+        - +t: Restrict topic changes to operators.
+        - +k: Set a password for the channel.
+        - +l: Limit the number of users in the channel.
+        - +o: Give operator privileges to a user.
